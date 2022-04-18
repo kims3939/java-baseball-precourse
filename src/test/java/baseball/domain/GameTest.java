@@ -2,6 +2,8 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import baseball.domain.answer.StaticAnswerGenerator;
+import baseball.domain.game.Game;
+import baseball.domain.game.Judgement;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

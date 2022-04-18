@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.game;
 
 public class Judgement {
     private final int strike;

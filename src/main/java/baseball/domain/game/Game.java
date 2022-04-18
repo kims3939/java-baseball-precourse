@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.game;
 
 import baseball.domain.answer.Answer;
 import baseball.domain.answer.AnswerGenerator;
