@@ -1,32 +1,62 @@
 package baseball.controller;
 
+import baseball.domain.Game;
+import baseball.domain.Judgement;
+import baseball.domain.answer.RandomAnswerGenerator;
 import baseball.domain.status.GameStatus;
-import baseball.domain.status.StatusUpdater;
 import baseball.view.Display;
 import baseball.view.Message;
 import baseball.view.MessageFactory;
+import baseball.view.MessageParam;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Launcher {
 
     private final Display display = new Display();
     private final MessageFactory messageFactory = new MessageFactory();
-    private final StatusUpdater statusUpdater = new StatusUpdater();
 
     public void start() {
-        GameStatus gameStatus = GameStatus.READY;
-
-        while(!gameStatus.equals(GameStatus.FINISH)) {
-            printMessage(gameStatus);
-            String input = Console.readLine();
-            gameStatus = statusUpdater.nextStatusOf(gameStatus, input);
+        while(!playOrStop().equals(GameStatus.FINISH)) {
+            playGame();
         }
     }
 
-    private void printMessage(GameStatus gameStatus) {
-        Message message = messageFactory.build(gameStatus);
-        display.printMessage(message);
+    private GameStatus playOrStop() {
+        Message message = messageFactory.build(GameStatus.READY);
+        display.print(message);
+        String userInput = Console.readLine();
+        if (userInput.equals("1")) {
+            return GameStatus.PLAYING;
+        }
+
+        return GameStatus.FINISH;
     }
 
+    private void playGame() {
+        GameStatus status = GameStatus.PLAYING;
+        Game game = new Game(new RandomAnswerGenerator());
 
+        while(!status.equals(GameStatus.WIN)) {
+            Message prompt = messageFactory.build(GameStatus.PLAYING);
+            display.print(prompt);
+
+            String userInput = Console.readLine();
+            Judgement judgement = game.play(userInput);
+            printGameMessage(judgement);
+
+            if (judgement.getStrike() == 3) {
+                status = GameStatus.WIN;
+                Message winMessage = messageFactory.build(status);
+                display.print(winMessage);
+            }
+        }
+    }
+
+    private void printGameMessage(Judgement judgement) {
+        Message message = messageFactory.build(GameStatus.JUDGEMENT);
+        MessageParam param = new MessageParam();
+        param.add("ball", judgement.getBall());
+        param.add("strike", judgement.getStrike());
+        display.print(message, param);
+    }
 }
