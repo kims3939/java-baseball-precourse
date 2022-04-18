@@ -1,5 +1,5 @@
 package baseball.view;
 
 public interface Message {
-    void print();
+    void print(MessageParam param);
 }
