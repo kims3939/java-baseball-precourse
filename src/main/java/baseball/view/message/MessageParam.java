@@ -1,10 +1,11 @@
-package baseball.view;
+package baseball.view.message;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class MessageParam {
-    private Map<String, String> map = new HashMap<>();
+
+    private final Map<String, String> map = new HashMap<>();
 
     public void add(String key, Object value) {
         map.put(key, value.toString());

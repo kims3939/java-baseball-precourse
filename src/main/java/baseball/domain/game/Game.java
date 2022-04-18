@@ -21,11 +21,17 @@ public class Game {
 
     private int countStrike(String[] numbers) {
         int count = 0;
-        for(int pos = 0; pos < numbers.length; pos++) {
+        for (int pos = 0; pos < numbers.length; pos++) {
             int num = Integer.parseInt(numbers[pos]);
-            if (num == answer.numberAt(pos)) {
-                count++;
-            }
+            count = nextCountForStrike(count, num, pos);
+        }
+
+        return count;
+    }
+
+    private int nextCountForStrike(int count, int num, int pos) {
+        if (num == answer.numberAt(pos)) {
+            return count + 1;
         }
 
         return count;
@@ -33,11 +39,17 @@ public class Game {
 
     private int countBall(String[] numbers) {
         int count = 0;
-        for(int pos = 0; pos < numbers.length; pos++) {
+        for (int pos = 0; pos < numbers.length; pos++) {
             int num = Integer.parseInt(numbers[pos]);
-            if (answer.contains(num) && answer.numberAt(pos) != num) {
-                count++;
-            }
+            count = nextCountForBall(count, num, pos);
+        }
+
+        return count;
+    }
+
+    private int nextCountForBall(int count, int num, int pos) {
+        if (answer.contains(num) && answer.numberAt(pos) != num) {
+            return count + 1;
         }
 
         return count;

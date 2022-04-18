@@ -1,8 +1,5 @@
 package baseball.domain.answer;
 
-import baseball.domain.answer.Answer;
-import baseball.domain.answer.AnswerGenerator;
-
 public class StaticAnswerGenerator implements AnswerGenerator {
 
     private final Answer answer;

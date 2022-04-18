@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.view.message;
 
 public class ReadyMessage implements Message {
 

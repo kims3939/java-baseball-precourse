@@ -5,9 +5,9 @@ import baseball.domain.game.Judgement;
 import baseball.domain.answer.RandomAnswerGenerator;
 import baseball.domain.status.GameStatus;
 import baseball.view.Display;
-import baseball.view.Message;
-import baseball.view.MessageFactory;
-import baseball.view.MessageParam;
+import baseball.view.message.Message;
+import baseball.view.message.MessageFactory;
+import baseball.view.message.MessageParam;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Launcher {
@@ -38,21 +38,27 @@ public class Launcher {
         GameStatus status = GameStatus.PLAYING;
         Game game = new Game(new RandomAnswerGenerator());
 
-        while(!status.equals(GameStatus.WIN)) {
+        while (!status.equals(GameStatus.WIN)) {
             Message prompt = messageFactory.build(GameStatus.PLAYING);
             display.print(prompt);
 
             String userInput = Console.readLine();
             validator.validate(userInput);
             Judgement judgement = game.play(userInput);
-            printGameMessage(judgement);
-
-            if (judgement.getStrike() == 3) {
-                status = GameStatus.WIN;
-                Message winMessage = messageFactory.build(status);
-                display.print(winMessage);
-            }
+            status = updateStatus(judgement);
         }
+    }
+
+    private GameStatus updateStatus(Judgement judgement) {
+        printGameMessage(judgement);
+
+        if (judgement.getStrike() == 3) {
+            Message winMessage = messageFactory.build(GameStatus.WIN);
+            display.print(winMessage);
+            return GameStatus.WIN;
+        }
+
+        return GameStatus.PLAYING;
     }
 
     private void printGameMessage(Judgement judgement) {

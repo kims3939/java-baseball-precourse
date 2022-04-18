@@ -1,6 +1,6 @@
-package baseball.view;
+package baseball.view.message;
 
-public class PlayingMessage implements Message{
+public class PlayingMessage implements Message {
 
     @Override
     public void print(MessageParam param) {

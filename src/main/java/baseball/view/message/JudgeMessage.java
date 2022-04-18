@@ -1,6 +1,6 @@
-package baseball.view;
+package baseball.view.message;
 
-public class JudgeMessage implements Message{
+public class JudgeMessage implements Message {
 
     @Override
     public void print(MessageParam param) {
@@ -31,6 +31,4 @@ public class JudgeMessage implements Message{
             message.append(strike).append("스트라이크");
         }
     }
-
-
 }

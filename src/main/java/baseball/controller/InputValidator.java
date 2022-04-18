@@ -1,6 +1,7 @@
 package baseball.controller;
 
 public class InputValidator {
+
     public void validate(String input) {
         assertLength(input);
         assertNumeric(input);

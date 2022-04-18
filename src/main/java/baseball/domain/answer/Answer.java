@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Answer {
+
     private final Map<Integer, Integer> numbers = new HashMap<>();
     private final Set<Integer> valueSet = new HashSet<>();
 

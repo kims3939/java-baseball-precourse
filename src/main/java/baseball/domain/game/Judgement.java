@@ -1,6 +1,7 @@
 package baseball.domain.game;
 
 public class Judgement {
+
     private final int strike;
     private final int ball;
 

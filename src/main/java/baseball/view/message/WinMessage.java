@@ -1,6 +1,6 @@
-package baseball.view;
+package baseball.view.message;
 
-public class WinMessage implements Message{
+public class WinMessage implements Message {
 
     @Override
     public void print(MessageParam param) {
