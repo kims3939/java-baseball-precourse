@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.GameStatus;
+import baseball.domain.status.GameStatus;
 
 public class MessageFactory {
     public Message build(GameStatus status) {

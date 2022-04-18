@@ -1,8 +1,10 @@
-package baseball.domain;
+package baseball.domain.answer;
 
+import baseball.domain.answer.Answer;
+import baseball.domain.answer.AnswerGenerator;
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class AnswerGenerator {
+public class RandomAnswerGenerator implements AnswerGenerator {
 
     public Answer generate() {
         Answer answer = new Answer();

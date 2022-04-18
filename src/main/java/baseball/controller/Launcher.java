@@ -1,7 +1,7 @@
 package baseball.controller;
 
-import baseball.domain.GameStatus;
-import baseball.domain.StatusUpdater;
+import baseball.domain.status.GameStatus;
+import baseball.domain.status.StatusUpdater;
 import baseball.view.Display;
 import baseball.view.Message;
 import baseball.view.MessageFactory;

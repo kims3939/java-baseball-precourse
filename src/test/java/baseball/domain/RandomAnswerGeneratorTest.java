@@ -2,18 +2,16 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Collection;
-import java.util.HashSet;
+import baseball.domain.answer.Answer;
+import baseball.domain.answer.RandomAnswerGenerator;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("AnswerGenerator 클래스")
-class AnswerGeneratorTest {
+@DisplayName("RandomAnswerGenerator 클래스")
+class RandomAnswerGeneratorTest {
 
-    AnswerGenerator generator = new AnswerGenerator();
+    RandomAnswerGenerator generator = new RandomAnswerGenerator();
 
     @Test
     @DisplayName("generate 메소드가 생성한 answer는 3자리수 숫자를 가진다")

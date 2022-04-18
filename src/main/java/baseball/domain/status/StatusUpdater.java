@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.status;
 
 public class StatusUpdater {
     public GameStatus nextStatusOf(GameStatus prevStatus, String input) {

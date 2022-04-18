@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.domain.answer;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -20,6 +20,14 @@ public class Answer {
 
     public boolean isNewNumber(int number) {
         return !valueSet.contains(number);
+    }
+
+    public boolean contains(int number) {
+        return valueSet.contains(number);
+    }
+
+    public int numberAt(int position) {
+        return numbers.get(position);
     }
 
     public Map<Integer, Integer> getNumbers() {
